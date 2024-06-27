@@ -1,0 +1,40 @@
+---
+title: Observable test
+format: jgi-html
+---
+
+## Variables
+
+Let's create some example variables.
+
+```{ojs}
+a = 10
+b = a + epsilon
+```
+
+```{ojs}
+//| echo: false
+viewof epsilon = Inputs.range([-1, 1], {label: "epsilon", step: 0.01})
+```
+
+We have created variables `a` = ${a} and `b` = ${b.toFixed(2)}.
+
+## Plotting
+
+Now let's make simple plots of the data:
+
+```{ojs}
+//| code-fold: true
+data = [{a: a, b: b}]
+
+Plot
+  .rectX(data, {x: "b"})
+  .plot({x: {domain: [9, 11]}})
+```
+
+```{ojs}
+//| code-fold: true
+Plot
+  .dot(data, {x: "b", y: "a"})
+  .plot({x: {domain: [9, 11]}, y: {domain: [9, 11]}})
+```
